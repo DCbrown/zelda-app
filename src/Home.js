@@ -32,7 +32,6 @@ const Home = () => {
                 }
             {games && filterValue.length === 0 && <Games games={games} />}
             {filterValue && <Games games={filterValue} />}
-
         </div>
 
     );
