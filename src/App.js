@@ -19,7 +19,6 @@ function App() {
             <Route path="/games/:id">
               <GamesDetails />
             </Route>
-
           </Switch>
         </div>
       </div>
