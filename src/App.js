@@ -1,7 +1,6 @@
 import './index.css';
 import Home from './Home';
 import GamesDetails from './GamesDetails';
-import Test from './Test';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -12,9 +11,6 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
-            </Route>
-            <Route path="/test">
-              <Test />
             </Route>
             <Route path="/games/:id">
               <GamesDetails />
