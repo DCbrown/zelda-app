@@ -7,7 +7,6 @@ const Games = ({ games }) => {
                 <div key={game._id}>
                     <Link to={`/games/${game._id}`}>
                         <p>{game.name}</p>
-                        <p>{game.released_date}</p>
                     </Link>
                 </div>
             ))}
