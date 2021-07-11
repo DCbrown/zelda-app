@@ -36,7 +36,7 @@ const Home = () => {
                 </form>
              }
             {games && !searching && <Games games={games} />}
-            {filterValue && <Games games={filterValue} />}
+            {searching && filterValue && <Games games={filterValue} />}
             {searching && filterValue.length === 0  && <div>No results, please try again.</div>}
         </div>
     );
