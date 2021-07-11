@@ -6,14 +6,21 @@ const Home = () => {
     const { data: games, isPending, error } = useFetch('http://zelda-api.apius.cc/api/games');
     const [searchValue, setSearchValue] = useState('');
     const [filterValue, setFilterValue] = useState([]);
+    const [searching, setSearching] = useState(false);
 
     const searchGame = (e) => {
        e.preventDefault();
 
        let filtered = games.filter(el => el.name.includes(searchValue));
        console.log('name', searchValue);
-       console.log('results', filtered);
+       // console.log('results', filtered);
        setFilterValue(filtered);
+       // console.log(filterValue.length);
+       if (filterValue) {
+           setSearching(true);
+       } else {
+           setSearching(false);
+       }
     }
 
     return (
@@ -29,9 +36,11 @@ const Home = () => {
                            />
                     <button type="submit">Search Game</button>
                 </form>
-                }
-            {games && filterValue.length === 0 && <Games games={games} />}
+             }
+            {games && !searching && <Games games={games} />}
             {filterValue && <Games games={filterValue} />}
+            {searching && filterValue.length === 0  && <div>No results, please try again.</div>}
+
         </div>
 
     );
