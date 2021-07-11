@@ -13,9 +13,7 @@ const Home = () => {
 
        let filtered = games.filter(el => el.name.includes(searchValue));
        console.log('name', searchValue);
-       // console.log('results', filtered);
        setFilterValue(filtered);
-       // console.log(filterValue.length);
        if (filterValue) {
            setSearching(true);
        } else {
@@ -40,9 +38,7 @@ const Home = () => {
             {games && !searching && <Games games={games} />}
             {filterValue && <Games games={filterValue} />}
             {searching && filterValue.length === 0  && <div>No results, please try again.</div>}
-
         </div>
-
     );
 }
 
