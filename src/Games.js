@@ -73,8 +73,11 @@ const Games = ({ games }) => {
             <Typography className={classes.textColor} gutterBottom variant="h5" component="h2">
               {game.name}
             </Typography>
-            <Typography className={classes.textColor}>
+            <Typography className={classes.textColor} variant="h6">
               {game.released_date}
+            </Typography>
+            <Typography className={classes.textColor} variant="h6">
+              {game.publisher}
             </Typography>
           </CardContent>
         </Card>

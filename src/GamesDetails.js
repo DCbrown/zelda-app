@@ -65,6 +65,9 @@ const GamesDetails = () => {
                         Publisher: {game.publisher}
                         </Typography>
                         <Typography variant="h5" color="inherit" paragraph>
+                        Release Date: {game.released_date}
+                        </Typography>
+                        <Typography variant="h5" color="inherit" paragraph>
                         {game.description}
                         </Typography>
                         <Button onClick={handleGoBack} variant="contained" size="medium" color="default" >
