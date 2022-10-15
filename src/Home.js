@@ -3,7 +3,7 @@ import Games from './Games';
 import { useState } from "react";
 
 const Home = () => {
-    const { data: games, isPending, error } = useFetch('http://zelda-api.apius.cc/api/games');
+    const { data: games, isPending, error } = useFetch('https://zelda-api.apius.cc/api/games');
     const [searchValue, setSearchValue] = useState('');
     const [filterValue, setFilterValue] = useState([]);
     const [searching, setSearching] = useState(false);

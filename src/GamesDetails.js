@@ -4,7 +4,7 @@ import useFetch from './useFetch';
 
 const GamesDetails = () => {
     const { id } = useParams();
-    const { data: game, error, isPending } = useFetch('http://zelda-api.apius.cc/api/games/' + id);
+    const { data: game, error, isPending } = useFetch('https://zelda-api.apius.cc/api/games/' + id);
     const history = useHistory();
 
     const handleGoBack = () => {
