@@ -8,7 +8,13 @@ const useFetch = (url) => {
     useEffect(() => {
         const abortConst = new AbortController();
 
-        fetch(url, { signal: abortConst.signal })
+        fetch(url,  {
+            method: 'get',
+            mode: 'no-cors',
+            headers: {
+               'Access-Control-Allow-Origin' : '*'
+            },
+          })
             .then(res => {
                 if (!res.ok) {
                     throw Error('could not fetch Data');
