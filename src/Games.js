@@ -67,7 +67,7 @@ const Games = ({ games }) => {
        <>
         {games.map((game) => (
         <Grid item key={game.id} xs={12} sm={6} md={4}>
-        <Link style={{ textDecoration: 'none' }} to={`/games/${game._id}`}>
+        <Link style={{ textDecoration: 'none' }} to={`/games/${game.id}`}>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <Typography className={classes.textColor} gutterBottom variant="h5" component="h2">
@@ -77,7 +77,7 @@ const Games = ({ games }) => {
               {game.released_date}
             </Typography>
             <Typography className={classes.textColor} variant="h6">
-              {game.publisher}
+              {game.developer}
             </Typography>
           </CardContent>
         </Card>

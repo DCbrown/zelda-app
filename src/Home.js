@@ -106,7 +106,7 @@ const Home = () => {
                     <input type="text" 
                         value={searchValue} 
                         className={classes.searchInput}  
-                        placeholder="Search By Title"
+                        placeholder="Search By Game Title"
                         onChange={(e) => setSearchValue(e.target.value)}    
                     />
                     <Button className={classes.searchButton} type="submit" variant="contained" color="primary">
