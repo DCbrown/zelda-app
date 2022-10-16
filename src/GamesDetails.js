@@ -9,7 +9,10 @@ import Button from '@material-ui/core/Button';
 
 const GamesDetails = () => {
     const { id } = useParams();
-    const { data: game, error, isPending } = useFetch('http://zelda-api.apius.cc/api/games/' + id);
+    // const { data: game, error, isPending } = useFetch('http://zelda-api.apius.cc/api/games/' + id);
+    const { isLoading, serverError, apiData } = useFetch(
+        "https://zelda.fanapis.com/api/games/" + id
+      );
     const history = useHistory();
 
     const handleGoBack = () => {
@@ -45,9 +48,9 @@ const GamesDetails = () => {
     const classes = useStyles();
     return (
         <div>
-            {error && <h2 className={classes.message}>Error, could not get data</h2>}
-            {isPending && <h1 className={classes.message}>Loading...</h1>}
-            {game && (
+            {serverError && <h2 className={classes.message}>Error, could not get data</h2>}
+            {isLoading && <h1 className={classes.message}>Loading...</h1>}
+            {apiData && (
                 
                 <Paper className={classes.mainFeaturedPost}>
                 {/* Increase the priority of the hero background image */}
@@ -56,19 +59,19 @@ const GamesDetails = () => {
                     <Grid item md={12}>
                     <div className={classes.mainFeaturedPostContent}>
                         <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                        {game.name}
+                        {apiData.name}
                         </Typography>
                         <Typography variant="h5" color="inherit" paragraph>
-                        Developer: {game.developer}
+                        Developer: {apiData.developer}
                         </Typography>
                         <Typography variant="h5" color="inherit" paragraph>
-                        Publisher: {game.publisher}
+                        Publisher: {apiData.publisher}
                         </Typography>
                         <Typography variant="h5" color="inherit" paragraph>
-                        Release Date: {game.released_date}
+                        Release Date: {apiData.released_date}
                         </Typography>
                         <Typography variant="h5" color="inherit" paragraph>
-                        {game.description}
+                        {apiData.description}
                         </Typography>
                         <Button onClick={handleGoBack} variant="contained" size="medium" color="default" >
                             Go Back

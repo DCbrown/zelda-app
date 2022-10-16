@@ -6,7 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const Games = ({ games }) => {
+const Games = ( apiData ) => {
+
+    console.log(apiData);
 
     const useStyles = makeStyles((theme) => ({
         icon: {
@@ -65,25 +67,23 @@ const Games = ({ games }) => {
         </div>
         */
        <>
-        {games.map((game) => (
-        <Grid item key={game.id} xs={12} sm={6} md={4}>
-        <Link style={{ textDecoration: 'none' }} to={`/games/${game._id}`}>
+        <Grid item key={apiData.games.id} xs={12} sm={6} md={4}>
+        <Link style={{ textDecoration: 'none' }} to={`/games/${apiData.games.id}`}>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <Typography className={classes.textColor} gutterBottom variant="h5" component="h2">
-              {game.name}
+              {apiData.games.name}
             </Typography>
             <Typography className={classes.textColor} variant="h6">
-              {game.released_date}
+              {apiData.games.released_date}
             </Typography>
             <Typography className={classes.textColor} variant="h6">
-              {game.publisher}
+              {apiData.games.developer}
             </Typography>
           </CardContent>
         </Card>
         </Link>
       </Grid>
-      ))}
       </>
     );
 }

@@ -1,37 +1,29 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const useFetch = (url) => {
-    const [data, setData] = useState(null);
-    const [isPending, setIsPending] = useState(true);
-    const [error, setError] = useState(null);
-
+    const [isLoading, setIsLoading] = useState(false);
+    const [apiData, setApiData] = useState(null);
+    const [serverError, setServerError] = useState(null);
+  
     useEffect(() => {
-        const abortConst = new AbortController();
-
-        fetch(url, { signal: abortConst.signal })
-            .then(res => {
-                if (!res.ok) {
-                    throw Error('could not fetch Data');
-                }
-                return res.json();
-            })
-            .then((data) => {
-                setData(data.data);
-                setIsPending(false);
-                setError(null);
-            })
-            .catch((err) => {
-                if (err.name === 'AbortError') {
-                    console.error('fetch aborted');
-                } else {
-                    setIsPending(false);
-                    setError(err.message);
-                }
-            });
-        return () => abortConst.abort();
+      setIsLoading(true);
+      const fetchData = async () => {
+        try {
+          const resp = await axios.get(url);
+          const data = await resp?.data.data;
+  
+          setApiData(data);
+          setIsLoading(false);
+        } catch (error) {
+          setServerError(error);
+          setIsLoading(false);
+        }
+      };
+  
+      fetchData();
     }, [url]);
-
-    return { data, isPending, error }
-}
-
+  
+    return { isLoading, apiData, serverError };
+  };
 export default useFetch;
