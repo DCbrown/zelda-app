@@ -5,56 +5,26 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import CardContent from '@material-ui/core/CardContent';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
   const { isLoading, serverError, apiData } = useFetch(
     "https://zelda.fanapis.com/api/games"
   );
-    // const { data: games, isPending, error } = useFetch('https://zelda.fanapis.com/api/games');
     const [searchValue, setSearchValue] = useState('');
     const [filterValue, setFilterValue] = useState([]);
     const [searching, setSearching] = useState(false);
 
-    if(apiData) {
-      console.log(apiData);
-    } else {
-      console.log("No api data");
-    }
-
-    
-
-
     const searchGame = (e) => {
-       e.preventDefault();
+      e.preventDefault();
       
-    if (Array.isArray(apiData)) {
-    const results = apiData.filter(val => val.name.includes(searchValue));    
-    setFilterValue(results);  
-    console.log(results, "FOUND");
-    } else {
-    console.log("No games found");
-    }
+      const results = apiData.filter(val => val.name.includes(searchValue));    
+      setFilterValue(results);  
 
-    if (filterValue) {
-      setSearching(true);
-    } else {
-      setSearching(false);
-    }
-
-       /*
-       let filtered = apiData.filter(el => el.games.name === searchValue);
-       console.log(searchValue, "searching");
-       setFilterValue(filtered);
-       if (filterValue) {
-           setSearching(true);
-       } else {
-           setSearching(false);
-       }
-       */
+      if (filterValue) {
+        setSearching(true);
+      } else {
+        setSearching(false);
+      }
     }
 
     const useStyles = makeStyles((theme) => ({
@@ -147,54 +117,32 @@ const Home = () => {
       }));
 
       const classes = useStyles();
-    return (
-        /*
-        <div>
-            {error && <div>Error, could not get data</div>}
-            {isPending && <div>Loading...</div>}
-            {games && 
-                <form onSubmit={searchGame}>
-                    <input type="text" 
-                           value={searchValue} 
-                           placeholder="Search By Name"
-                           onChange={(e) => setSearchValue(e.target.value)}    
-                           />
-                    <button type="submit">Search Game</button>
-                </form>
-             }
-            {games && !searching && <Games games={games} />}
-            {filterValue && <Games games={filterValue} />}  
-            {searching && filterValue.length === 0  && <div>No results, please try again.</div>}
-
-        </div>
-        */
-        <main>
-        <Container className={classes.cardGrid} >
-            {serverError && <h2 className={classes.message}>Error, could not get data</h2>}
-            {isLoading && <h1 className={classes.message}>Loading...</h1>}
-            {apiData && 
-                <form className={classes.searchForm} onSubmit={searchGame}>
-                    <input type="text" 
-                        value={searchValue} 
-                        className={classes.searchInput}  
-                        placeholder="Search By Title"
-                        onChange={(e) => setSearchValue(e.target.value)}    
-                    />
-                    <Button className={classes.searchButton} type="submit" variant="contained" color="primary">
-                        Search
-                    </Button>
-                </form>
-                
-            }   
-
-          <Grid container spacing={6}>
-            {apiData && !searching && <Games games={apiData} />}
-            {filterValue && <Games games={filterValue} />}
-            {searching && filterValue.length === 0  && <h2 className={classes.textColor}>No results, please try again.</h2>}
-          </Grid>
-        </Container>
-      </main>
-    );
+      return (
+          <main>
+          <Container className={classes.cardGrid} >
+              {serverError && <h2 className={classes.message}>Error, could not get data</h2>}
+              {isLoading && <h1 className={classes.message}>Loading...</h1>}
+              {apiData && 
+                  <form className={classes.searchForm} onSubmit={searchGame}>
+                      <input type="text" 
+                          value={searchValue} 
+                          className={classes.searchInput}  
+                          placeholder="Search By Title"
+                          onChange={(e) => setSearchValue(e.target.value)}    
+                      />
+                      <Button className={classes.searchButton} type="submit" variant="contained" color="primary">
+                          Search
+                      </Button>
+                  </form>
+              }   
+            <Grid container spacing={6}>
+              {apiData && !searching && <Games games={apiData} />}
+              {filterValue && <Games games={filterValue} />}
+              {searching && filterValue.length === 0  && <h2 className={classes.textColor}>No results, please try again.</h2>}
+            </Grid>
+          </Container>
+        </main>
+      );
 }
 
 export default Home;

@@ -5,10 +5,7 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const Games = ( apiData ) => {
-
-    console.log(apiData);
 
     const useStyles = makeStyles((theme) => ({
         icon: {
@@ -53,41 +50,29 @@ const Games = ( apiData ) => {
 
       const classes = useStyles();
 
-
-    return (
-        /*
-        <div className="">
-            {games.map((game) => (
-                <div key={game._id}>
-                    <Link to={`/games/${game._id}`}>
-                        <p>{game.name}</p>
-                    </Link>
-                </div>
-            ))}
-        </div>
-        */
-        <>
-        {apiData.games.map((apiData) => (
-        <Grid item key={apiData.id} xs={12} sm={6} md={4}>
-        <Link style={{ textDecoration: 'none' }} to={`/games/${apiData.id}`}>
-        <Card className={classes.card}>
-          <CardContent className={classes.cardContent}>
-            <Typography className={classes.textColor} gutterBottom variant="h5" component="h2">
-              {apiData.name}
-            </Typography>
-            <Typography className={classes.textColor} variant="h6">
-              {apiData.released_date}
-            </Typography>
-            <Typography className={classes.textColor} variant="h6">
-              {apiData.developer}
-            </Typography>
-          </CardContent>
-        </Card>
-        </Link>
-      </Grid>
-      ))}
-      </>
-    );
+      return (
+          <>
+          {apiData.games.map((apiData) => (
+          <Grid item key={apiData.id} xs={12} sm={6} md={4}>
+          <Link style={{ textDecoration: 'none' }} to={`/games/${apiData.id}`}>
+          <Card className={classes.card}>
+            <CardContent className={classes.cardContent}>
+              <Typography className={classes.textColor} gutterBottom variant="h5" component="h2">
+                {apiData.name}
+              </Typography>
+              <Typography className={classes.textColor} variant="h6">
+                {apiData.released_date}
+              </Typography>
+              <Typography className={classes.textColor} variant="h6">
+                {apiData.developer}
+              </Typography>
+            </CardContent>
+          </Card>
+          </Link>
+        </Grid>
+        ))}
+        </>
+      );
 }
 
 export default Games;

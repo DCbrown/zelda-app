@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 
 const GamesDetails = () => {
     const { id } = useParams();
-    // const { data: game, error, isPending } = useFetch('http://zelda-api.apius.cc/api/games/' + id);
     const { isLoading, serverError, apiData } = useFetch(
         "https://zelda.fanapis.com/api/games/" + id
       );
@@ -51,9 +50,7 @@ const GamesDetails = () => {
             {serverError && <h2 className={classes.message}>Error, could not get data</h2>}
             {isLoading && <h1 className={classes.message}>Loading...</h1>}
             {apiData && (
-                
                 <Paper className={classes.mainFeaturedPost}>
-                {/* Increase the priority of the hero background image */}
                 <div className={classes.overlay} />
                 <Grid container>
                     <Grid item md={12}>
