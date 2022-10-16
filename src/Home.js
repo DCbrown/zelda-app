@@ -39,6 +39,12 @@ const Home = () => {
     console.log("No games found");
     }
 
+    if (filterValue) {
+      setSearching(true);
+    } else {
+      setSearching(false);
+    }
+
        /*
        let filtered = apiData.filter(el => el.games.name === searchValue);
        console.log(searchValue, "searching");
@@ -182,13 +188,9 @@ const Home = () => {
             }   
 
           <Grid container spacing={6}>
-          {searching && filterValue.length === 0  && <h2 className={classes.textColor}>No results, please try again.</h2>}
-          {apiData && !searching && apiData.map((apiData) => (
-            <Games games={apiData} />
-          ))}
-          {filterValue && filterValue.map((filter) => (
-            <Games games={filter} />
-          ))}
+            {apiData && !searching && <Games games={apiData} />}
+            {filterValue && <Games games={filterValue} />}
+            {searching && filterValue.length === 0  && <h2 className={classes.textColor}>No results, please try again.</h2>}
           </Grid>
         </Container>
       </main>

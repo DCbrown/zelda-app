@@ -66,24 +66,26 @@ const Games = ( apiData ) => {
             ))}
         </div>
         */
-       <>
-        <Grid item key={apiData.games.id} xs={12} sm={6} md={4}>
-        <Link style={{ textDecoration: 'none' }} to={`/games/${apiData.games.id}`}>
+        <>
+        {apiData.games.map((apiData) => (
+        <Grid item key={apiData.id} xs={12} sm={6} md={4}>
+        <Link style={{ textDecoration: 'none' }} to={`/games/${apiData.id}`}>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <Typography className={classes.textColor} gutterBottom variant="h5" component="h2">
-              {apiData.games.name}
+              {apiData.name}
             </Typography>
             <Typography className={classes.textColor} variant="h6">
-              {apiData.games.released_date}
+              {apiData.released_date}
             </Typography>
             <Typography className={classes.textColor} variant="h6">
-              {apiData.games.developer}
+              {apiData.developer}
             </Typography>
           </CardContent>
         </Card>
         </Link>
       </Grid>
+      ))}
       </>
     );
 }
