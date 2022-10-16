@@ -76,44 +76,6 @@ const Home = () => {
             marginLeft: theme.spacing(1),
             marginTop: theme.spacing(0.2)
         },
-        icon: {
-          marginRight: theme.spacing(2),
-        },
-        heroContent: {
-          backgroundColor: theme.palette.background.paper,
-          padding: theme.spacing(8, 0, 6),
-        },
-        heroButtons: {
-          marginTop: theme.spacing(4),
-        },
-        cardGrid: {
-          paddingTop: theme.spacing(8),
-          paddingBottom: theme.spacing(8),
-        },
-        card: {
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          background: 'linear-gradient(0deg, rgba(154,255,176,1) 0%,rgba(158,218,173,1) 95%)',
-          borderTopLeftRadius: "0px",
-          borderTop: "20px double rgba(0, 0, 0, 1)",
-          borderTopRightRadius: "0px",
-          borderBottom: "20px double rgba(0, 0, 0, 1)",
-          borderBottomRightRadius: "0px",
-          borderLeft: "20px double rgba(0, 0, 0, 1)",
-          borderBottomLeftRadius: "0px",
-          borderRight: "20px double rgba(0, 0, 0, 1)",
-        },
-        cardMedia: {
-          paddingTop: '56.25%',
-        },
-        cardContent: {
-          flexGrow: 1,
-        },
-        footer: {
-          backgroundColor: theme.palette.background.paper,
-          padding: theme.spacing(6),
-        },
       }));
 
       const classes = useStyles();
